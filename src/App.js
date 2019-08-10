@@ -1,28 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+import Landing from "./components/Layouts/Landing";
+import Cart from "./components/Layouts/Cart";
+import View from "./components/Layouts/View";
+import AuthPage from "./components/Layouts/AuthPage";
+import Checkout from "./components/Layouts/Checkout";
 
-export default App;
+import "./App.css";
+
+export default () => (
+  <Router>
+    <Switch>
+      <Route path="/" component={Landing} exact />
+      <Route path="/cart" component={Cart} />
+      <Route path="/auth" component={AuthPage} />
+      <Route path="/checkout" component={Checkout} />
+      <Route path="/view/:id" component={View} />
+    </Switch>
+  </Router>
+);
